@@ -31,42 +31,18 @@ export const createCustomer = async (customer): Promise<Response> => {
 }
 
 
-// export const createSubscription = async (paymentMethodId, customerId, priceIDsForPlan): Response => {
+// export const createSubscription = async (paymentMethodId, customerId, priceIDsForPlan) => {
 //     try {
 //         await getClient().paymentMethods.attach(paymentMethodId, {
 //             customer: customerId,
 //         });
 //     } catch (error) {
-//         // return res.status('402').send({ error: { message: error.message } });
-//     }
-// }
-
-
-// app.post('/create-subscription', async (req, res) => {
-//     // Set the default payment method on the customer
-//     try {
-//         await stripe.paymentMethods.attach(req.body.paymentMethodId, {
-//             customer: req.body.customerId,
-//         });
-//     } catch (error) {
-//         return res.status('402').send({ error: { message: error.message } });
+//         return error;
 //     }
 //
-//     let updateCustomerDefaultPaymentMethod = await stripe.customers.update(
-//         req.body.customerId,
-//         {
-//             invoice_settings: {
-//                 default_payment_method: req.body.paymentMethodId,
-//             },
-//         }
-//     );
-//
-//     // Create the subscription
-//     const subscription = await stripe.subscriptions.create({
-//         customer: req.body.customerId,
-//         items: [{ price: process.env[req.body.priceId] }],
+//     const subscription = await getClient().subscriptions.create({
+//         customer: customerId,
+//         items: [{ price: process.env[priceId] }],
 //         expand: ['latest_invoice.payment_intent', 'pending_setup_intent'],
 //     });
-//
-//     res.send(subscription);
-// });
+// }
