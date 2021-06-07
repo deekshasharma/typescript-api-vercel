@@ -12,7 +12,7 @@ type CustomerSuccess = Stripe.Customer;
 type StripeError = Stripe.StripeError;
 type Response = CustomerSuccess | StripeError;
 
-export const createCustomer = async (customer): Promise<Response> => {
+export const createCustomer = async ({...customer}): Promise<Response> => {
     // save the customer.id as stripeCustomerId in the backend.
     try{
         return await getClient().customers.create({
