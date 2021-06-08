@@ -1,7 +1,15 @@
 const { getClient } = require("./utils");
 
-//TODO: Confirm if the charges should be prorated from 1st to 1st of every month.
-export const createSubscription = async (customerId, paymentMethodId, priceIDs) => {
+const planToPriceId = {
+    particle: ['PARTICLE_ORDERS_PRICE_ID','PARTICLE_ITEMS_PRICE_ID', 'PARTICLE_BANDWIDTH_PRICE_ID', 'PARTICLE_API_CALLS_PRICE_ID' ],
+    atom: ['ATOM_ORDERS_PRICE_ID','ATOM_ITEMS_PRICE_ID', 'ATOM_BANDWIDTH_PRICE_ID', 'ATOM_API_CALLS_PRICE_ID' ],
+}
+
+//TODO: Should charges be prorated from 1st to 1st of every month.
+export const createSubscription = async (customerId, paymentMethodId, planName) => {
+    // var date = new Date();
+    // var firstDayNextMonth = new Date(date.getFullYear(), date.getMonth()+1, 1).getTime();
+    const priceIDs = planToPriceId[planName.toLowerCase()];
     if(paymentMethodId) {
         // Set the default payment method on the customer
         try {
@@ -18,7 +26,7 @@ export const createSubscription = async (customerId, paymentMethodId, priceIDs) 
     return await getClient().subscriptions.create({
         customer: customerId,
         items: [{ price: process.env[priceIDs[0]] },{ price: process.env[priceIDs[1]] }, { price: process.env[priceIDs[2]] }, { price: process.env[priceIDs[3]] }],
-        expand: ['latest_invoice.payment_intent', 'pending_setup_intent'],
+        expand: ['latest_invoice.payment_intent', 'pending_setup_intent']
     });
 }
 

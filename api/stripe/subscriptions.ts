@@ -6,8 +6,10 @@ import {allowCors} from '../allowCors';
 const create = async (req: VercelRequest, res: VercelResponse) => {
     const customerId = req.body.customerId;
     const paymentMethodId = req.body.paymentMethodId;
-    const priceIDs = req.body.priceIDs;
-    createSubscription(customerId, paymentMethodId, priceIDs ).then((response) => {
+    const planName = req.body.planName;
+    if(!customerId) return res.status(400).send({message: 'Missing required input:  customerId '})
+    if(!planName) return res.status(400).send({message: 'Missing required input:  planName '})
+    createSubscription(customerId, paymentMethodId, planName ).then((response) => {
         res.send({subscription: response})
     })
 }
