@@ -1,3 +1,6 @@
+/**
+ * NOTE: This should only be used if Stripe create customer api needs to be called separately.
+ */
 const { getClient } = require("./utils");
 import Stripe from 'stripe';
 if (!process.env.STRIPE_SECRET_KEY
