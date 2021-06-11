@@ -17,8 +17,6 @@ This directory is an example of creating serverless APIs in TypeScript and deplo
 ### Local
 ```shell
 http://localhost:3000/api/hello?name=<string>
-http://localhost:3000/api/address?total=<number>&type=<addressType>
-http://localhost:3000/api/currency
 ```
 
 - The value of `number` must be between `1` and `50`(inclusive)  
@@ -27,16 +25,9 @@ http://localhost:3000/api/currency
 Some examples are  
 ```shell
 http://localhost:3000/api/hello?name=harit
-http://localhost:3000/api/address?total=20&type=zipCode
-http://localhost:3000/api/address?total=10&type=city
-http://localhost:3000/api/currency
 ```
 
 ### Production
-- https://typescript-serverless-api-vercel-al75io70u-hhimanshu.vercel.app/api/hello?name=harit  
-- https://typescript-serverless-api-vercel-al75io70u-hhimanshu.vercel.app/api/address?total=20&type=zipCode  
-- https://typescript-serverless-api-vercel-al75io70u-hhimanshu.vercel.app/api/address?total=10&type=city  
-- https://typescript-serverless-api-vercel-al75io70u-hhimanshu.vercel.app/api/currency  
 
 
 ## Start Developing
