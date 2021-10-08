@@ -9,7 +9,8 @@
     "test": "jest --testPathIgnorePatterns=integration_tests",
     "test:watch": "jest --watch --testPathIgnorePatterns=integration_tests",
     "test:integration": "jest int",
-    "semantic-release": "semantic-release"
+    "semantic-release": "semantic-release",
+    "debug": "npx vercel dev"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.13.15",
@@ -21,12 +22,8 @@
     "semantic-release": "^17.4.2"
   },
   "dependencies": {
-    "invariant": "^2.2.4",
-    "stripe": "^8.152.0"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/hhimanshu/typescript-serverless-api-vercel"
+    "@passbase/node": "^1.3.0",
+    "auth0": "^2.36.2"
   },
   "release": {
     "branches": [
